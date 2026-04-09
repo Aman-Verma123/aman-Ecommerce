@@ -74,7 +74,9 @@ e.preventDefault();
 try {
 
 const res = await axios.post(
-"http://localhost:5001/products",
+// "http://localhost:5001/products",
+`${import.meta.env.VITE_API_URL}/products`,
+  
 product
 );
 

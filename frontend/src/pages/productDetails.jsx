@@ -18,7 +18,8 @@ useEffect(() => {
 const fetchProduct = async () => {
   try {
     const res = await axios.get(
-      `http://localhost:5001/product/${id}`
+      // `http://localhost:5001/product/${id}`
+      `${import.meta.env.VITE_API_URL}/product/${id}`
     );
 
     setProduct(res.data);
@@ -79,7 +80,8 @@ const handleDeleteProduct = (id) => {
 
 if(window.confirm("Are you sure you want to delete this product?")){
 
-  axios.delete(`http://localhost:5001/product/${id}`) 
+  // axios.delete(`http://localhost:5001/product/${id}`) 
+  axios.delete(`${import.meta.env.VITE_API_URL}/product/${id}`)
   .then(res => {
     alert( res.data.message);
     setProduct(null);

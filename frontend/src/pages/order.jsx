@@ -45,7 +45,9 @@ pincode:""
 
 useEffect(()=>{
 
-axios.get(`http://localhost:5001/product/${id}`)
+// axios.get(`http://localhost:5001/product/${id}`)
+axios.get(`${import.meta.env.VITE_API_URL}/product/${id}`)
+
 .then(res => setProduct(res.data))
 .catch(err => console.log(err));
 
@@ -89,7 +91,9 @@ try{
 setLoading(true);
 
 await axios.post(
-"http://localhost:5001/orders",
+// "http://localhost:5001/orders",
+// orderData
+`${import.meta.env.VITE_API_URL}/orders`,
 orderData
 );
 

@@ -43,7 +43,8 @@ try{
 const user = JSON.parse(localStorage.getItem("user"));
 
 const res = await axios.get(
-`http://localhost:5001/orders/${user._id}`
+// `http://localhost:5001/orders/${user._id}`
+`${import.meta.env.VITE_API_URL}/orders/${user._id}`
 );
 
 setOrders(res.data);
@@ -82,7 +83,9 @@ if(!confirmDelete) return;
 try{
 
 await axios.delete(
-`http://localhost:5001/orders/${id}`
+// `http://localhost:5001/orders/${id}`
+`${import.meta.env.VITE_API_URL}/orders/${id}`
+
 );
 
 setOrders(

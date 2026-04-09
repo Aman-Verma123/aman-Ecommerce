@@ -24,7 +24,8 @@ const handleLogout = () => {
 
 
 const savetoDB = () => {
-  axios.post("http://localhost:5001/update-profile", currentUser)
+  // axios.post("http://localhost:5001/update-profile", currentUser)
+  axios.post(`${import.meta.env.VITE_API_URL}/update-profile`, currentUser)
     .then(response => {
 
       alert("Profile updated successfully!");

@@ -24,7 +24,9 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5001/signup",
+      // "http://localhost:5001/signup",
+      // { name, email, password }
+      `${import.meta.env.VITE_API_URL}/signup`,
       { name, email, password }
     );
 
