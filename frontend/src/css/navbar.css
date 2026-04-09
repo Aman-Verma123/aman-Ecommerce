@@ -1,0 +1,212 @@
+body{
+overflow-x: hidden;
+}
+
+.navbar{
+
+position:sticky;
+top:0;
+z-index:1000;
+
+background: rgba(30, 64, 175, 0.35);   /* Blue Glass */
+
+backdrop-filter: blur(12px);
+background: rgba(2,6,23,0.6);
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+
+}
+
+
+
+/* .nav-container{
+
+display:flex;
+align-items:center;
+padding:10px 6%;
+color:white;
+
+} */
+
+.nav-container{
+display:flex;
+align-items:center;
+width:100%;
+padding-right: 20px;
+}
+
+/* Logo */
+
+.logo{
+
+font-size:22px;
+font-weight:600;
+
+}
+
+.logo a{
+
+text-decoration:none;
+
+background:linear-gradient(90deg,#38bdf8,#6366f1);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+
+
+/* Nav Links */
+
+.nav-links{
+
+display:flex;
+gap:28px;
+
+margin-left:auto;   /* MAIN FIX */
+
+align-items:center;
+
+}
+
+
+
+/* Nav Items */
+
+.nav-links a{
+
+text-decoration:none;
+color:#e2e8f0;
+
+font-size:15px;
+
+position:relative;
+
+transition:0.3s;
+
+}
+
+
+/* Hover Effect */
+
+.nav-links a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-5px;
+
+width:0;
+height:2px;
+
+background:linear-gradient(90deg,#38bdf8,#6366f1);
+
+transition:0.3s;
+
+}
+
+.nav-links a:hover::after{
+
+width:100%;
+
+}
+
+.nav-links a:hover{
+
+color:white;
+
+}
+
+
+/* Mobile Toggle */
+
+.menu-toggle{
+
+display:none;
+font-size:24px;
+cursor:pointer;
+margin-left:auto;  
+
+}
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+
+.nav-links{
+
+position:fixed;
+
+right:0;
+top:0;
+
+height:100vh;
+width:250px;
+
+flex-direction:column;
+
+background: rgba(2,6,23,0.95);
+
+padding-top:80px;
+
+transform:translateX(100%);   /* Hidden by default */
+
+transition:0.3s ease;
+
+gap:25px;
+
+backdrop-filter: blur(10px);
+
+}
+
+.nav-links.active{
+
+transform:translateX(0);   /* Show when clicked */
+
+}
+
+.menu-toggle{
+
+display:block;
+margin-left:auto;
+z-index:1001;
+
+}
+
+
+
+}
+
+.logout{
+  padding: 6px 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #093977;
+  color: white;
+  margin-left: 20px;
+  font-size: 1.2em;
+}
+
+.logout:hover{
+  background-color: #311958;
+  color: tomato;
+  transition: 0.3s;
+  position: relative;
+}
+
+.name-user{
+color: rgb(193, 223, 111);
+font-size: 15px;}
+
+.name-user:hover{
+color: rgb(255, 255, 255);
+transition: 0.3s;
+background-color: darkkhaki;
+padding: 1px 2px;
+border-radius: 4px;
+
+}

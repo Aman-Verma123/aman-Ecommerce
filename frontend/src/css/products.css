@@ -1,0 +1,292 @@
+.products-page{
+min-height:100vh;
+padding:50px 30px;
+background: linear-gradient(135deg,#0f172a,#020617);
+color:white;
+}
+
+
+/* Header */
+
+.products-header{
+text-align:center;
+margin-bottom:50px;
+}
+
+.products-header h1{
+font-size:36px;
+font-weight:700;
+/* background: linear-gradient(90deg,#518094,#818cf8); */
+background: linear-gradient(
+135deg,
+#0f2027,
+#203a43,
+#2c5364
+);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.products-header p{
+color:#94a3b8;
+margin-top:8px;
+}
+
+
+/* Grid */
+/* 
+.products-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+} */
+
+.products-container{
+display:grid;
+grid-template-columns: repeat(4, 1fr);
+gap:30px;
+padding-bottom:2px;
+}
+
+
+
+/* Card */
+
+.product-card{
+background: rgba(255,255,255,0.05);
+backdrop-filter: blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:18px;
+overflow:hidden;
+transition:0.4s ease;
+position:relative;
+min-width: 250px;
+min-height: 400px;
+}
+
+.product-card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+
+/* Image */
+
+.image-container{
+height:220px;
+/* height km ki he */
+overflow:hidden;
+position:relative;
+}
+
+.image-container img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.product-card:hover img{
+transform:scale(1.1);
+}
+
+
+/* Category */
+
+.category{
+position:absolute;
+top:15px;
+left:15px;
+background: linear-gradient(90deg,#38bdf8,#6366f1);
+padding:5px 14px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+
+/* Content */
+
+.product-info{
+padding:18px;
+}
+
+.product-info h3{
+font-size:20px;
+margin-bottom:6px;
+font-weight:600;
+}
+
+
+.description{
+font-size:14px;
+color:#94a3b8;
+margin-bottom:12px;
+line-height:1.4;
+}
+
+
+/* Rating */
+
+.rating{
+color:#fbbf24;
+margin-bottom:6px;
+font-weight:600;
+}
+
+
+/* Price */
+
+.price{
+font-size:22px;
+font-weight:700;
+/* margin-bottom:0px; */
+background: linear-gradient(90deg,#22c55e,#4ade80);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.inOneLine .price{
+/* background: linear-gradient(90deg,#22c55e,#4ade80); */
+font-size: 23px;
+}
+
+/* Stock */
+
+.stock{
+font-size:13px;
+margin-bottom:14px;
+font-weight:500;
+}
+
+.stock.in{
+color:#22c55e;
+}
+
+.stock.out{
+color:#ef4444;
+}
+
+
+/* Buttons */
+
+.btn-container{
+display:flex;
+gap:12px;
+}
+
+.cart-btn{
+flex:1;
+background: linear-gradient(90deg,#3b82f6,#6366f1);
+border:none;
+padding:10px;
+border-radius:8px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+font-weight:500;
+}
+
+.cart-btn:hover{
+opacity:0.9;
+transform:scale(1.05);
+}
+
+
+.view-btn{
+flex:1;
+background: rgba(13, 116, 68, 0.664);
+border:1px solid rgba(255,255,255,0.1);
+padding:10px;
+border-radius:8px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+/* margin-bottom: 7px; */
+}
+
+.view-btn:hover{
+background:rgba(255,255,255,0.15);
+}
+
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.products-container{
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.image-container{
+height:220px;
+}
+
+}
+
+
+@media(max-width:500px){
+
+.products-page{
+padding:30px 15px;
+}
+
+.products-header h1{
+font-size:26px;
+}
+
+.image-container{
+height:200px;
+}
+
+}
+
+.inOneLine{
+display: flex;
+justify-content: space-between;
+}
+
+
+
+@media(max-width:600px){
+
+.products-container{
+grid-template-columns: 1fr;
+justify-items:center;
+}
+
+.product-card{
+width:100%;
+max-width:340px;
+margin:auto;
+}
+
+}
+.product-card{
+cursor:pointer;
+}
+
+.order-btn{
+display:inline-block;
+padding:7px 47px;
+background: linear-gradient(90deg,#8cd813,#43b873);
+color:white;
+border:none;
+border-radius:8px;
+text-decoration: none;
+transition:0.3s;
+font-weight:500;
+position: relative;
+top: 10px;
+align-items: center;
+transition: 0.3s ease;
+white-space: nowrap;
+
+
+}
+.order-btn:hover{
+background: linear-gradient(90deg,#43b873,#8cd813);
+color: green;
+transform: scale(1.1);
+ border: 1px solid #43b873;
+}
