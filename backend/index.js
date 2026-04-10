@@ -13,14 +13,12 @@ import connectDB from './config/db.js';
 const app = express();
 // ............................................................
 
+
 app.use(cors({
   origin: "https://aman-ecommerce-frontend.onrender.com",
-  methods: ["GET","POST","PUT","DELETE"],
-  credentials:true
+  credentials: true
 }));
-
-app.options("*", cors());
-// .......................................................
+//...............................
 
 app.use(express.json());
 
