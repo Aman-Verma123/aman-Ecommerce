@@ -341,3 +341,46 @@ height:170px;
 }
 
 }
+
+/* ================= Grid ================= */
+
+.products-container{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+
+}
+
+
+/* ================= Laptop ================= */
+
+@media(max-width:1200px){
+
+.products-container{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+
+/* ================= Tablet ================= */
+
+@media(max-width:900px){
+
+.products-container{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+
+/* ================= Mobile ================= */
+
+@media(max-width:600px){
+
+.products-container{
+grid-template-columns:1fr;   /* full width */
+}
+
+}
