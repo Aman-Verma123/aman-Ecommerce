@@ -29,14 +29,18 @@ return () => {
 }, []);
 
 
-// Lock Scroll When Menu Open
+// Lock Scroll when menu open
 useEffect(() => {
 
 if(menuOpen){
-  document.body.classList.add("menu-open");
+document.body.classList.add("menu-open");
 }else{
-  document.body.classList.remove("menu-open");
+document.body.classList.remove("menu-open");
 }
+
+return () => {
+document.body.classList.remove("menu-open");
+};
 
 },[menuOpen]);
 
@@ -53,10 +57,14 @@ setMenuOpen(false);
 };
 
 
-// Get User
-const user = localStorage.getItem("user")
-? JSON.parse(localStorage.getItem("user"))
-: null;
+// Get User Safe
+let user = null;
+
+try{
+user = JSON.parse(localStorage.getItem("user"));
+}catch{
+user = null;
+}
 
 
 return (
@@ -74,7 +82,9 @@ return (
 {/* Nav Links */}
 <div className={`nav-links ${menuOpen ? "active" : ""}`}>
 
-<Link to="/" onClick={()=>setMenuOpen(false)}>Home</Link>
+<Link to="/" onClick={()=>setMenuOpen(false)}>
+Home
+</Link>
 
 <Link to="/products" onClick={()=>setMenuOpen(false)}>
 Products
@@ -107,11 +117,11 @@ Signup
 
 {token && user && (
 <Link 
-to="/profile" 
+to="/profile"
 onClick={()=>setMenuOpen(false)}
 >
 <span className="name-user">Hello </span>
-{user.name.split(" ")[0]}
+{user?.name?.split(" ")[0]}
 </Link>
 )}
 
@@ -128,7 +138,7 @@ My Orders
 
 {token && (
 <button 
-className="logout" 
+className="logout"
 onClick={logout}
 >
 Logout
@@ -138,10 +148,10 @@ Logout
 </div>
 
 
-{/* Mobile Toggle */}
+{/* Menu Toggle (Right Side Always) */}
 <div 
-className="menu-toggle" 
-onClick={()=>setMenuOpen(!menuOpen)}
+className="menu-toggle"
+onClick={() => setMenuOpen(!menuOpen)}
 >
 ☰
 </div>
@@ -153,7 +163,7 @@ onClick={()=>setMenuOpen(!menuOpen)}
 {menuOpen && (
 <div 
 className="overlay"
-onClick={()=>setMenuOpen(false)}
+onClick={() => setMenuOpen(false)}
 ></div>
 )}
 
