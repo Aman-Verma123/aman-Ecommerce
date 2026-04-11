@@ -1,6 +1,22 @@
+/* Global Fix */
+
 body{
-overflow-x: hidden;
+margin:0;
+padding:0;
+overflow-x:hidden;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
+/* Scroll Lock When Menu Open */
+
+body.menu-open{
+overflow:hidden;
+}
+
+
+
+/* Navbar */
 
 .navbar{
 
@@ -8,10 +24,9 @@ position:sticky;
 top:0;
 z-index:1000;
 
-background: rgba(30, 64, 175, 0.35);   /* Blue Glass */
+background: rgba(2,6,23,0.75);
 
 backdrop-filter: blur(12px);
-background: rgba(2,6,23,0.6);
 
 border-bottom:1px solid rgba(255,255,255,0.08);
 
@@ -19,21 +34,21 @@ border-bottom:1px solid rgba(255,255,255,0.08);
 
 
 
-/* .nav-container{
-
-display:flex;
-align-items:center;
-padding:10px 6%;
-color:white;
-
-} */
+/* Container */
 
 .nav-container{
+
 display:flex;
 align-items:center;
-width:100%;
-padding-right: 20px;
+justify-content:space-between;
+
+padding:14px 6%;
+
+color:white;
+
 }
+
+
 
 /* Logo */
 
@@ -49,6 +64,7 @@ font-weight:600;
 text-decoration:none;
 
 background:linear-gradient(90deg,#38bdf8,#6366f1);
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
@@ -61,9 +77,8 @@ background:linear-gradient(90deg,#38bdf8,#6366f1);
 .nav-links{
 
 display:flex;
-gap:28px;
 
-margin-left:auto;   /* MAIN FIX */
+gap:28px;
 
 align-items:center;
 
@@ -71,11 +86,12 @@ align-items:center;
 
 
 
-/* Nav Items */
+/* Nav Links Style */
 
 .nav-links a{
 
 text-decoration:none;
+
 color:#e2e8f0;
 
 font-size:15px;
@@ -87,7 +103,8 @@ transition:0.3s;
 }
 
 
-/* Hover Effect */
+
+/* Hover Line Effect */
 
 .nav-links a::after{
 
@@ -108,16 +125,59 @@ transition:0.3s;
 }
 
 .nav-links a:hover::after{
-
 width:100%;
-
 }
 
 .nav-links a:hover{
+color:white;
+}
+
+
+
+/* Logout Button */
+
+.logout{
+
+padding:7px 14px;
+
+border:none;
+
+border-radius:6px;
+
+background:linear-gradient(90deg,#2563eb,#4f46e5);
 
 color:white;
 
+cursor:pointer;
+
+font-size:14px;
+
+transition:0.3s;
+
 }
+
+.logout:hover{
+
+background:linear-gradient(90deg,#4f46e5,#2563eb);
+
+transform:translateY(-1px);
+
+}
+
+
+
+/* Username */
+
+.name-user{
+
+color:#a3e635;
+
+font-weight:500;
+
+margin-right:3px;
+
+}
+
 
 
 /* Mobile Toggle */
@@ -125,88 +185,145 @@ color:white;
 .menu-toggle{
 
 display:none;
+
 font-size:24px;
+
 cursor:pointer;
-margin-left:auto;  
+
+color:white;
 
 }
+
+
+
+/* Overlay */
+
+.overlay{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100vh;
+
+background:rgba(0,0,0,0.5);
+
+z-index:999;
+
+opacity:1;
+
+transition:0.3s;
+
+}
+
+
+
+/* Tablet */
+
+@media(max-width:1024px){
+
+.nav-container{
+padding:12px 5%;
+}
+
+}
+
 
 
 /* Mobile */
 
 @media(max-width:900px){
 
+.menu-toggle{
+display:block;
+z-index:1001;
+}
+
+
 
 .nav-links{
 
 position:fixed;
 
-right:0;
 top:0;
+right:0;
 
 height:100vh;
-width:250px;
+
+width:260px;
+
+background:#020617;
 
 flex-direction:column;
 
-background: rgba(2,6,23,0.95);
-
 padding-top:80px;
 
-transform:translateX(100%);   /* Hidden by default */
+gap:28px;
+
+align-items:flex-start;
+
+padding-left:30px;
+
+transform:translateX(100%);
 
 transition:0.3s ease;
 
-gap:25px;
-
-backdrop-filter: blur(10px);
+z-index:1000;
 
 }
 
+
+
 .nav-links.active{
+transform:translateX(0);
+}
 
-transform:translateX(0);   /* Show when clicked */
 
+
+/* Mobile Nav Items */
+
+.nav-links a{
+
+font-size:16px;
+
+width:100%;
+
+}
+
+
+
+/* Logout Mobile */
+
+.logout{
+
+width:85%;
+
+margin-top:10px;
+
+}
+
+
+
+}
+
+
+
+/* Small Mobile */
+
+@media(max-width:480px){
+
+.logo{
+font-size:20px;
 }
 
 .menu-toggle{
-
-display:block;
-margin-left:auto;
-z-index:1001;
-
+font-size:22px;
 }
 
-
-
+.nav-links{
+width:230px;
 }
-
-.logout{
-  padding: 6px 8px;
-  border: none;
-  border-radius: 4px;
-  background-color: #093977;
-  color: white;
-  margin-left: 20px;
-  font-size: 1.2em;
-}
-
-.logout:hover{
-  background-color: #311958;
-  color: tomato;
-  transition: 0.3s;
-  position: relative;
-}
-
-.name-user{
-color: rgb(193, 223, 111);
-font-size: 15px;}
-
-.name-user:hover{
-color: rgb(255, 255, 255);
-transition: 0.3s;
-background-color: darkkhaki;
-padding: 1px 2px;
-border-radius: 4px;
 
 }
