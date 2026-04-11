@@ -4,7 +4,16 @@
 
 padding:30px 20px;
 min-height:100vh;
-background:#f8f9fb;
+background: linear-gradient(
+135deg,
+#0f172a,
+#020617,
+#020617,
+#020617,
+#111827
+);
+
+color:white;
 
 }
 
