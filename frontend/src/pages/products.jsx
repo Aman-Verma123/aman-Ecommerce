@@ -4,20 +4,29 @@ import "../css/products.css";
 import { Link, useNavigate } from "react-router-dom";
 
 const Products = () => {
+
 const navigate = useNavigate();
 
-  
-
 const [products, setProducts] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
 
 useEffect(() => {
 
-// axios.get("http://localhost:5001/products")
-axios.get(`${import.meta.env.VITE_API_URL}/products`)
-.then(res => setProducts(res.data))
-.catch(err => console.error(err));
+axios
+.get(`${import.meta.env.VITE_API_URL}/products`)
+.then(res => {
+setProducts(res.data);
+setLoading(false);
+})
+.catch(err => {
+console.error(err);
+setError("Failed to load products");
+setLoading(false);
+});
 
 }, []);
+
 
 
 
@@ -25,17 +34,18 @@ const handleAddToCart = (product) => {
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// check product already exists
 const existingProduct = cart.find(
 (item) => item._id === product._id
 );
 
 if(existingProduct){
+
 cart = cart.map(item =>
 item._id === product._id
 ? { ...item, quantity: item.quantity + 1 }
 : item
 );
+
 }else{
 
 cart.push({
@@ -53,6 +63,35 @@ alert("Product Added To Cart");
 
 
 
+/* ================= LOADING ================= */
+
+if(loading){
+
+return(
+<div className="products-loading-wrapper">
+<div className="products-loader"></div>
+<h2 className="loading-text">Loading Products...</h2>
+</div>
+)
+
+}
+
+
+
+/* ================= ERROR ================= */
+
+if(error){
+
+return(
+<div className="products-error">
+<h2>{error}</h2>
+</div>
+)
+
+}
+
+
+
 
 return (
 
@@ -61,8 +100,8 @@ return (
 {/* Header */}
 
 <div className="products-header">
-<h1>Our Products</h1>
-<p>Discover Amazing Deals</p>
+<h1 className="products-title">Our Products</h1>
+<p className="products-subtitle">Discover Amazing Deals</p>
 </div>
 
 
@@ -73,77 +112,94 @@ return (
 {
 products.map((item) => (
 
-<div className="product-card" key={item._id}   
- onClick={() => navigate(`/product/${item._id}`)}
->   
-  {/* ye div pr click krne pr  <Link to={`/product/${item._id}`}> is pr redicect ho .. */}
+<div 
+className="product-card" 
+key={item._id}
+onClick={() => navigate(`/product/${item._id}`)}
+>
 
-<div className="image-container">
+<div className="product-image-container">
 
-<img src={item.imageUrl} alt={item.name} />
+<img 
+src={item.imageUrl} 
+alt={item.name}
+className="product-image"
+/>
 
-
-
-
- <span className="category"> {item.category} </span>
-
+<span className="product-category">
+{item.category}
+</span>
 
 </div>
 
 
 <div className="product-info">
 
-<h3>{item.name}</h3>
+<h3 className="product-name">
+{item.name}
+</h3>
 
-<p className="description">
-{/* {item.description.substring(0,60)}... */}
+<p className="product-description">
 {item.description.substring(0,18)}...
 </p>
 
-<div className="rating gapping">
+<div className="product-rating">
 ⭐ {item.rating || 4.5}
 </div>
 
-{/* ............................. ek line me align krne he ........................ */}
-<div className="inOneLine">
-  <div className="price ">
+
+<div className="product-price-stock">
+
+<div className="product-price">
 ₹ {item.price}
 </div>
 
-<div className={`stock ${item.stock > 0 ? "in" : "out"}`}>
+<div 
+className={`product-stock 
+${item.stock > 0 ? "in-stock" : "out-stock"}`}
+>
 {item.stock > 0 ? "In Stock" : "Out of Stock"}
 </div>
+
 </div>
 
-{/* ............................................................ */}
-<div className="btn-container">
 
-{/* <button className="cart-btn" onClick={() => handleAddToCart(item)}>
-Add To Cart
-</button> */}
+
+<div className="product-buttons">
+
 <button 
-className="cart-btn" 
-onClick={(e) => {
+className="cart-btn"
+onClick={(e)=>{
 e.stopPropagation();
 handleAddToCart(item);
 }}
->Add to Cart</button>
+>
+Add to Cart
+</button>
 
 
+<Link 
+to={`/product/${item._id}`}
+onClick={(e)=>e.stopPropagation()}
+>
 
-<Link to={`/product/${item._id}`}
-onClick={(e) => e.stopPropagation()}>
-<button className="view-btn" >
+<button className="view-btn">
 View
 </button>
+
 </Link>
 
 
 </div>
 
-{/* <Link to={`/orders`} className="order-btn"
-onClick={(e) => e.stopPropagation()}>Order Now</Link> */}
-<Link  to={`/orders/${item._id}`}  className="order-btn" onClick={(e) => e.stopPropagation()}> Order Now </Link>
+
+<Link 
+to={`/orders/${item._id}`} 
+className="order-btn"
+onClick={(e)=>e.stopPropagation()}
+>
+Order Now
+</Link>
 
 </div>
 
@@ -160,4 +216,4 @@ onClick={(e) => e.stopPropagation()}>Order Now</Link> */}
 
 };
 
-export default Products; 
+export default Products;
