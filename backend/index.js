@@ -15,7 +15,10 @@ const app = express();
 
 
 app.use(cors({
-  origin: "https://aman-ecommerce-frontend.onrender.com",
+  origin: [
+    "https://aman-ecommerce-frontend.onrender.com",
+    "https://aman-ecommerce-frontend2.onrender.com"
+  ],
   credentials: true
 }));
 //...............................
